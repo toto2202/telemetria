@@ -54,8 +54,6 @@
             if($ping > $min) $min = $ping;
 
         }
-
-
     }
 
 
@@ -67,8 +65,10 @@
 
     $pingValidi = pacchettiValidi($pingGrezzi);
     $tampoMedio = calcoloTempoMedio($pingValidi);
+    $pacchettiPersi = contaPacchettiPersi($pingGrezzi)
     $pingMax = 0;
     $pingMin = 0;
+    
 
 ?>
 
@@ -80,6 +80,33 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- visualizzazione dei dati -->
+    <ul>
+      <li> Totale rilevazioni: <?php count($pingGrezzi); ?></li>
+      <li> Pacchetti validi:   <?= count($pingValidi)    ?></li>
+      <li> Pacchetti persi:    <?= $pacchettiPersi       ?></li>
+      <li> Media:              <?= $tempoMedia          ?></li>
+      <li> Minimo:             <?= $pingMin         ?></li>
+      <li> Massimo:            <?= $pingMax         ?></li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>#        </th>
+                <th>Ping (ms)</th>
+                <th>Stato    </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php for ( $i = 0; $i < count($pingValidi); $i++): ?>
+                <tr>
+                    <td><?= $i + 1 ?></td>
+                    <td><?= $pingValidi[$i]?></td>
+                    <td><?= $pingValidi[$i]>= 150 ? "CRITICO" : "NORMALE"?></td>
+                </tr>
+            <?php endfor;?>
+        </tbody>
+    </table>
     
 </body>
 </html>
