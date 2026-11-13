@@ -26,6 +26,7 @@
         return $pingValidi;
 
     }
+
     /*
     calcolooTempoMedio accetta un array
     */
@@ -44,6 +45,21 @@
         return round($media, 2);
     }
 
+    function calcoloMaxMin($pingValidi, &$min, &$max){
+        $min = $pingValidi[0];
+        $max = $pingValidi[0];
+
+        foreach($pingValidi as $ping){
+            if($ping > $max) $max = $ping;
+            if($ping > $min) $min = $ping;
+
+        }
+
+
+    }
+
+
+
 
    $pingGrezzi = [45, 120, -1, 32, 210, 85, -1, 18, 95, 310, 45, 60, -1, 150, 28, 240, 18, 72];
 
@@ -51,6 +67,8 @@
 
     $pingValidi = pacchettiValidi($pingGrezzi);
     $tampoMedio = calcoloTempoMedio($pingValidi);
+    $pingMax = 0;
+    $pingMin = 0;
 
 ?>
 
