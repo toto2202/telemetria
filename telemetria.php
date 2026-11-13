@@ -9,11 +9,12 @@
                 $pacchettiPersi++;
             }
         }
+        return contaPacchettiPersi;
     }
+
     /*
     pacchettiValidi accetta un array di interi e restituisce un array di interi
     */
-
     function pacchettiValidi($pingGrezzi){
         $pingValidi = [];
         foreach ($pingGrezzi as ping){
@@ -22,13 +23,34 @@
             }
         }
 
-        return $pingValidi
+        return $pingValidi;
 
     }
+    /*
+    calcolooTempoMedio accetta un array
+    */
+    function calcoloTempoMedio($pingValidi){
+        $somma = 0;
+        $cont = 0;
+        $media = 0;
+
+        foreach($pingValidi as $ping){
+            $somma += $ping;
+            $cont++;
+        }
+
+        $media = $somma / $cont;
+
+        return round($media, 2);
+    }
+
 
    $pingGrezzi = [45, 120, -1, 32, 210, 85, -1, 18, 95, 310, 45, 60, -1, 150, 28, 240, 18, 72];
 
     array_push($pingGrezzi, 55, 190, 12);
+
+    $pingValidi = pacchettiValidi($pingGrezzi);
+    $tampoMedio = calcoloTempoMedio($pingValidi);
 
 ?>
 
