@@ -10,7 +10,22 @@
             }
         }
     }
-   
+    /*
+    pacchettiValidi accetta un array di interi e restituisce un array di interi
+    */
+
+    function pacchettiValidi($pingGrezzi){
+        $pingValidi = [];
+        foreach ($pingGrezzi as ping){
+            if($ping > 0){
+                $pingValidi[] = $ping;
+            }
+        }
+
+        return $pingValidi
+
+    }
+
    $pingGrezzi = [45, 120, -1, 32, 210, 85, -1, 18, 95, 310, 45, 60, -1, 150, 28, 240, 18, 72];
 
     array_push($pingGrezzi, 55, 190, 12);
